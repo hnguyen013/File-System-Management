@@ -44,3 +44,7 @@ for item in fs.ls():
 fs.change_directory("/")
 print("\nVề thư mục gốc:")
 print("Path hiện tại:", fs.get_path())
+
+fs.create_file("a.txt", 100)
+fs.mkdir("Folder1")
+fs.create_file("Folder1", 100)
