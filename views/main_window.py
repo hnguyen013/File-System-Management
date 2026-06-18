@@ -1,7 +1,13 @@
 from PyQt6.QtWidgets import (
-    QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
-    QPushButton, QLabel, QListWidget, QMessageBox,
-    QInputDialog
+    QMainWindow,
+    QWidget,
+    QVBoxLayout,
+    QHBoxLayout,
+    QPushButton,
+    QLabel,
+    QListWidget,
+    QMessageBox,
+    QInputDialog,
 )
 
 from models.file_system_tree import FileSystemTree
@@ -37,12 +43,14 @@ class MainWindow(QMainWindow):
         self.btn_delete = QPushButton("Delete")
         self.btn_back = QPushButton("Back")
         self.btn_search = QPushButton("Search")
+        self.btn_refresh = QPushButton("Refresh")
 
         button_layout.addWidget(self.btn_new_folder)
         button_layout.addWidget(self.btn_new_file)
         button_layout.addWidget(self.btn_delete)
         button_layout.addWidget(self.btn_back)
         button_layout.addWidget(self.btn_search)
+        button_layout.addWidget(self.btn_refresh)
 
         main_layout.addLayout(button_layout)
 
@@ -54,6 +62,7 @@ class MainWindow(QMainWindow):
         self.btn_delete.clicked.connect(self.delete_item)
         self.btn_back.clicked.connect(self.go_back)
         self.btn_search.clicked.connect(self.search_item)
+        self.btn_refresh.clicked.connect(self.refresh_view)
 
     def refresh_view(self):
         self.path_label.setText("Current Path: " + self.fs.pwd())
@@ -116,9 +125,7 @@ class MainWindow(QMainWindow):
 
             if result:
                 QMessageBox.information(
-                    self,
-                    "Found",
-                    f"Found: {result.name} - {result.get_type()}"
+                    self, "Found", f"Found: {result.name} - {result.get_type()}"
                 )
             else:
                 QMessageBox.warning(self, "Not Found", "Item not found")

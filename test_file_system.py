@@ -1,6 +1,5 @@
 from models.file_system_tree import FileSystemTree
 
-
 fs = FileSystemTree()
 
 fs.mkdir("Documents")
@@ -47,4 +46,8 @@ print("Path hiện tại:", fs.get_path())
 
 fs.create_file("a.txt", 100)
 fs.mkdir("Folder1")
-fs.create_file("Folder1", 100)
+
+try:
+    fs.create_file("Folder1", 100)
+except ValueError as e:
+    print("Lỗi mong đợi:", e)

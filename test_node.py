@@ -1,7 +1,6 @@
 from models.file_node import FileNode
 from models.folder_node import FolderNode
 
-
 # Test tạo file
 file1 = FileNode("a.txt", 100)
 file2 = FileNode("b.txt", 200)
