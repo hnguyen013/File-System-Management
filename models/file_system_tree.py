@@ -16,8 +16,7 @@ class FileSystemTree:
         self.current_working_dir.add_child(folder)
 
     def create_file(self, name, size):
-        if any(child.name == name
-                for child in self.current_working_dir.children):
+        if any(child.name == name for child in self.current_working_dir.children):
             raise ValueError("File already exists")
 
         file = FileNode(name, size)
@@ -84,5 +83,6 @@ class FileSystemTree:
 
         path.reverse()
         return "/" + "/".join(path)
+
     def pwd(self):
         return self.get_path()
